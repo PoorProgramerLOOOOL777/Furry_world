@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f6edff">
+
+<title>FurryWorld 🐾 | Tu mundo creativo</title>
+
+<meta name="description" content="Explora el fandom furry, descubre fursonas, conoce la comunidad y encuentra inspiración para tus personajes.">
+
+<style>
+:root {
+    --bg: #faf7ff;
+    --card: #ffffff;
+    --text: #342746;
+    --muted: #796b8b;
+    --primary: #a879ed;
+    --primary-hover: #9161dc;
+    --secondary: #f0e2ff;
+    --border: #eadff5;
+    --shadow: 0 8px 28px #65418b12;
+}
+
+body.dark {
+    --bg: #191421;
+    --card: #261e33;
+    --text: #f6efff;
+    --muted: #c1b3d3;
+    --primary: #bd98ff;
+    --primary-hover: #d0b5ff;
+    --secondary: #3c2d50;
+    --border: #42334f;
+    --shadow: 0 8px 28px #00000025;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background .25s, color .25s;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: auto;
+}
+
+section {
+    padding: 65px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.section-heading h2 {
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+/* NAVBAR */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.logo {
+    color: var(--text);
+    font-size: 1.4rem;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text);
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-button {
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.menu-button {
+    display: none;
+}
+
+/* HERO */
+
+.hero {
+    padding: 65px 0;
+    overflow: hidden;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 38px;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--secondary);
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: .84rem;
+    font-weight: bold;
+    margin-bottom: 17px;
+}
+
+.hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    letter-spacing: -2px;
+    line-height: 1.08;
+    margin-bottom: 20px;
+}
+
+.gradient {
+    color: var(--primary);
+    background: linear-gradient(100deg, #a879ed, #ef92c8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+    max-width: 510px;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 13px;
+    padding: 12px 17px;
+    font-weight: bold;
+    transition: transform .2s, background .2s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+.button-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.button-primary:hover {
+    background: var(--primary-hover);
+    color: white;
+}
+
+.button-secondary {
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: var(--card);
+    margin-left: 7px;
+}
+
+.hero-image {
+    position: relative;
+    height: 400px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #efdfff, #ffdfef);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+body.dark .hero-image {
+    background: linear-gradient(135deg, #3a2851, #4d2d4d);
+}
+
+.hero-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s;
+}
+
+.hero-image:hover img {
+    transform: scale(1.035);
+}
+
+.floating {
+    position: absolute;
+    z-index: 2;
+    font-size: 1.8rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.float-one {
+    top: 20px;
+    left: 22px;
+}
+
+.float-two {
+    bottom: 20px;
+    right: 22px;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+/* TARJETAS DE IMÁGENES */
+
+.gallery-tools {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.search {
+    width: min(420px, 100%);
+    padding: 12px 15px;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    outline-color: var(--primary);
+}
+
+.filter-button {
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.filter-button.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 23px;
+}
+
+.furry-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 21px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform .25s, border-color .25s;
+}
+
+.furry-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+}
+
+.furry-card[hidden] {
+    display: none;
+}
+
+.furry-card .image-wrap {
+    height: 280px;
+    position: relative;
+    background: var(--secondary);
+    overflow: hidden;
+}
+
+.furry-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s;
+}
+
+.furry-card:hover img {
+    transform: scale(1.04);
+}
+
+.image-label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 6px 11px;
+    border-radius: 30px;
+    background: #ffffffeb;
+    color: #43324e;
+    font-size: .78rem;
+    font-weight: bold;
+}
+
+.card-content {
+    padding: 19px;
+}
+
+.card-content h3 {
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    color: var(--muted);
+    font-size: .92rem;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: .88rem;
+    font-weight: bold;
+}
+
+.credit-note {
+    font-size: .8rem;
+    color: var(--muted);
+    margin-top: 23px;
+    text-align: center;
+}
+
+/* INFORMACIÓN */
+
+.info-box {
+    background: var(--secondary);
+    border-radius: 27px;
+    padding: 35px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.info-grid h2 {
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.info-grid p {
+    margin-bottom: 15px;
+}
+
+.community-image {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* FURSONA */
+
+.fursona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.fursona-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 23px;
+}
+
+.fursona-card .icon {
+    font-size: 2.3rem;
+}
+
+.fursona-card h3 {
+    margin: 9px 0;
+}
+
+.fursona-card p {
+    color: var(--muted);
+    font-size: .94rem;
+}
+
+/* RECURSOS */
+
+.resource-list {
+    max-width: 760px;
+    margin: auto;
+    display: grid;
+    gap: 13px;
+}
+
+.resource {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 17px;
+    border-radius: 16px;
+    color: var(--text);
+    transition: border-color .2s, transform .2s;
+}
+
+.resource:hover {
+    border-color: var(--primary);
+    transform: translateX(3px);
+    text-decoration: none;
+}
+
+.resource-icon {
+    font-size: 2rem;
+}
+
+.resource strong {
+    display: block;
+}
+
+.resource small {
+    color: var(--muted);
+}
+
+/* LISTA INTERACTIVA */
+
+.checklist {
+    max-width: 650px;
+    margin: auto;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+}
+
+.check-item input {
+    width: 19px;
+    height: 19px;
+    accent-color: var(--primary);
+}
+
+.progress-track {
+    height: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--border);
+    margin-top: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #a879ed, #ef92c8);
+    transition: width .25s;
+}
+
+.progress-text {
+    margin-top: 9px;
+    font-size: .9rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+.empty-message {
+    display: none;
+    text-align: center;
+    color: var(--muted);
+    padding: 20px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+    color: var(--muted);
+}
+
+footer strong {
+    color: var(--primary);
+}
+
+footer p + p {
+    margin-top: 5px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-grid {
+        gap: 22px;
+    }
+
+    .hero-image {
+        height: 330px;
+    }
+}
+
+@media (max-width: 650px) {
+    section {
+        padding: 45px 0;
+    }
+
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero-grid,
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+        height: 310px;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 71px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .menu-button {
+        display: inline-block;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .fursona-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .furry-card .image-wrap {
+        height: 300px;
+    }
+
+    .info-box {
+        padding: 22px;
+    }
+
+    .button-secondary {
+        margin: 10px 0 0;
+    }
+
+    .community-image {
+        height: 270px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container nav">
+        <a href="#inicio" class="logo">🐾 Furry<span>World</span></a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#galeria">Galería</a>
+            <a href="#fursonas">Fursonas</a>
+            <a href="#comunidad">Comunidad</a>
+            <a href="#recursos">Recursos</a>
+            <a href="#creador">Mi fursona</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="nav-button" id="themeButton"
+                    aria-label="Cambiar tema">🌙</button>
+            <button class="nav-button menu-button" id="menuButton"
+                    aria-label="Abrir menú" aria-expanded="false">☰</button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<!-- INICIO -->
+<section class="hero" id="inicio">
+    <div class="container hero-grid">
+        <div>
+            <span class="badge">✨ Libertad creativa · Comunidad · Arte</span>
+
+            <h1>
+                Bienvenido a<br>
+                <span class="gradient">FurryWorld</span> 🐾
+            </h1>
+
+            <p>
+                Un rincón dedicado al universo furry, las fursonas y el arte.
+                Descubre personajes, encuentra inspiración y expresa tu
+                creatividad a tu manera.
+            </p>
+
+            <a href="#galeria" class="button button-primary">
+                Explorar ilustraciones →
+            </a>
+
+            <a href="#comunidad" class="button button-secondary">
+                Conocer el fandom
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <span class="floating float-one">✨</span>
+
+            <!-- Imagen de referencia externa. Cámbiala por una ilustración
+                 que tengas permiso para utilizar si vas a publicar la web. -->
+            <img
+                src="https://i.pinimg.com/1200x/83/5d/24/835d24bc3cc5aa4b226554530833f986.jpg"
+                alt="Ilustración furry de referencia"
+                fetchpriority="high"
+                onerror="this.style.display='none';this.parentElement.classList.add('image-fallback');this.parentElement.insertAdjacentHTML('beforeend','<div style=&quot;text-align:center;padding:25px;color:#604c79&quot;><div style=&quot;font-size:4rem&quot;>🐺</div><h3>¡Bienvenido a FurryWorld!</h3><p>La imagen externa no se pudo cargar.</p></div>')"
+            >
+
+            <span class="floating float-two">💜</span>
+        </div>
+    </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>🎨 Galería furry</h2>
+            <p>Descubre estilos, personajes y nuevas ideas para tu fursona.</p>
+        </div>
+
+        <div class="gallery-tools">
+            <input
+                type="search"
+                class="search"
+                id="gallerySearch"
+                placeholder="🔎 Buscar personajes o estilos..."
+                aria-label="Buscar ilustraciones"
+            >
+
+            <button class="filter-button active" data-filter="todos">
+                Todos
+            </button>
+
+            <button class="filter-button" data-filter="chibi">
+                Chibi
+            </button>
+
+            <button class="filter-button" data-filter="personajes">
+                Personajes
+            </button>
+
+            <button class="filter-button" data-filter="arte">
+                Arte
+            </button>
+        </div>
+
+        <div class="gallery" id="gallery">
+
+            <!-- ILUSTRACIÓN 1 -->
+            <article class="furry-card" data-category="chibi">
+                <div class="image-wrap">
+                    <img
+                        src="https://storage.vgen.co/uploads/cd315d89-3f01-4be6-8132-103564b24b8d/services/8d83d593-f83f-45e8-8150-90dc01578582.webp"
+                        alt="Ilustración de personajes furry estilo chibi"
+                        loading="lazy"
+                        onerror="this.closest('.furry-card').hidden=true"
+                    >
+                    <span class="image-label">✨ Chibi</span>
+                </div>
+
+                <div class="card-content">
+                    <h3>Personajes adorables</h3>
+                    <p>Diseños estilizados con expresiones y detalles divertidos.</p>
+
+                    <a class="card-link"
+                       href="https://vgen.co/"
+                       target="_blank" rel="noopener noreferrer">
+                        Explorar artistas →
+                    </a>
+                </div>
+            </article>
+
+            <!-- ILUSTRACIÓN 2 -->
+            <article class="furry-card" data-category="personajes">
+                <div class="image-wrap">
+                    <img
+                        src="https://fiverr-res.cloudinary.com/images/t_main1%2Cq_auto%2Cf_auto/gigs2/327634302/original/de1d77c578b208931ef04696522b2e8e9ecc7635/furry-art-animal-art.jpg"
+                        alt="Arte furry de animales antropomórficos"
+                        loading="lazy"
+                        onerror="this.closest('.furry-card').hidden=true"
+                    >
+                    <span class="image-label">🐺 Fursonas</span>
+                </div>
+
+                <div class="card-content">
+                    <h3>Personajes originales</h3>
+                    <p>Una muestra de las posibilidades artísticas del fandom.</p>
+
+                    <a class="card-link"
+                       href="https://www.fiverr.com/"
+                       target="_blank" rel="noopener noreferrer">
+                        Explorar artistas →
+                    </a>
+                </div>
+            </article>
+
+            <!-- ILUSTRACIÓN 3 -->
+            <article class="furry-card" data-category="arte">
+                <div class="image-wrap">
+                    <img
+                        src="https://flockywalker.com/storage/characters/01KMN8MBB195946FBJX53JKKBC.jpeg"
+                        alt="Personaje furry ilustrado"
+                        loading="lazy"
+                        onerror="this.closest('.furry-card').hidden=true"
+                    >
+                    <span class="image-label">🌈 Arte furry</span>
+                </div>
+
+                <div class="card-content">
+                    <h3>Diseños creativos</h3>
+                    <p>Explora diferentes combinaciones de colores y accesorios.</p>
+
+                    <a class="card-link"
+                       href="https://flockywalker.com/"
+                       target="_blank" rel="noopener noreferrer">
+                        Conocer más →
+                    </a>
+                </div>
+            </article>
+
+            <!-- ILUSTRACIÓN 4 -->
+            <article class="furry-card" data-category="personajes">
+                <div class="image-wrap">
+                    <img
+                        src="https://i.pinimg.com/1200x/83/5d/24/835d24bc3cc5aa4b226554530833f986.jpg"
+                        alt="Ilustración furry colorida"
+                        loading="lazy"
+                        onerror="this.closest('.furry-card').hidden=true"
+                    >
+                    <span class="image-label">💜 Inspiración</span>
+                </div>
+
+                <div class="card-content">
+                    <h3>Inspiración para tu fursona</h3>
+                    <p>Busca ideas para crear un personaje que represente tu imaginación.</p>
+
+                    <a class="card-link"
+                       href="https://www.pinterest.com/"
+                       target="_blank" rel="noopener noreferrer">
+                        Descubrir referencias →
+                    </a>
+                </div>
+            </article>
+
+            <!-- ILUSTRACIÓN 5 -->
+            <article class="furry-card" data-category="chibi">
+                <div class="image-wrap">
+                    <img
+                        src="https://placehold.co/700x700/e9d8ff/604c79?text=Furry+Chibi"
+                        alt="Espacio de ejemplo para una ilustración chibi"
+                        loading="lazy"
+                    >
+                    <span class="image-label">🎀 Chibi</span>
+                </div>
+
+                <div class="card-content">
+                    <h3>Estilo chibi</h3>
+                    <p>Una opción para personajes con proporciones caricaturescas.</p>
+
+                    <a class="card-link"
+                       href="https://www.deviantart.com/"
+                       target="_blank" rel="noopener noreferrer">
+                        Buscar ilustraciones →
+                    </a>
+                </div>
+            </article>
+
+            <!-- ILUSTRACIÓN 6 -->
+            <article class="furry-card" data-category="arte">
+                <div class="image-wrap">
+                    <img
+                        src="https://placehold.co/700x700/ffe0f0/815071?text=Furry+Art"
+                        alt="Espacio de ejemplo para arte furry"
+                        loading="lazy"
+                    >
+                    <span class="image-label">🎨 Arte</span>
+                </div>
+
+                <div class="card-content">
+                    <h3>Tu propio estilo</h3>
+                    <p>Experimenta con expresiones, accesorios y paletas de colores.</p>
+
+                    <a class="card-link"
+                       href="https://www.deviantart.com/"
+                       target="_blank" rel="noopener noreferrer">
+                        Encontrar inspiración →
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+        <p class="empty-message" id="emptyMessage">
+            No encontramos ilustraciones con esa búsqueda. 🐾
+        </p>
+
+        <p class="credit-note">
+            Las imágenes externas pertenecen a sus respectivos autores.
+            Comprueba los permisos de uso antes de republicarlas.
+            Las imágenes de ejemplo se pueden reemplazar por ilustraciones propias.
+        </p>
+
+    </div>
+</section>
+
+<!-- FURSONAS -->
+<section id="fursonas">
+    <div class="container">
+        <div class="section-heading">
+            <h2>🐾 ¿Qué es una fursona?</h2>
+            <p>Un personaje original que puedes diseñar como quieras.</p>
+        </div>
+
+        <div class="fursona-grid">
+
+            <article class="fursona-card">
+                <div class="icon">🦊</div>
+                <h3>Elige una especie</h3>
+                <p>
+                    Puede ser un zorro, lobo, gato, perro, dragón o una
+                    criatura completamente inventada.
+                </p>
+            </article>
+
+            <article class="fursona-card">
+                <div class="icon">🎨</div>
+                <h3>Diseña su apariencia</h3>
+                <p>
+                    Combina colores, patrones, ropa, accesorios y rasgos
+                    para construir su identidad visual.
+                </p>
+            </article>
+
+            <article class="fursona-card">
+                <div class="icon">✨</div>
+                <h3>Inventa su historia</h3>
+                <p>
+                    Piensa en su nombre, personalidad, gustos y el mundo
+                    en el que vive.
+                </p>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- COMUNIDAD -->
+<section id="comunidad">
+    <div class="container">
+        <div class="info-box">
+            <div class="info-grid">
+
+                <div>
+                    <span class="badge">💜 Comunidad furry</span>
+
+                    <h2>La creatividad no tiene vergüenza.</h2>
+
+                    <p>
+                        El fandom furry reúne a personas interesadas en
+                        personajes animales con características humanas,
+                        ilustración, escritura, animación y creación de personajes.
+                    </p>
+
+                    <p>
+                        Puedes participar creando arte, inventando historias,
+                        compartiendo tus diseños o aprendiendo sobre el fandom.
+                        No necesitas un fursuit para disfrutarlo.
+                    </p>
+
+                    <a
+                        href="https://furrycolombia.carrd.co/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button button-primary">
+                        🇨🇴 Conocer Furry Colombia →
+                    </a>
+                </div>
+
+                <img
+                    class="community-image"
+                    src="https://i.pinimg.com/1200x/83/5d/24/835d24bc3cc5aa4b226554530833f986.jpg"
+                    alt="Ilustración furry decorativa"
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                >
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RECURSOS -->
+<section id="recursos">
+    <div class="container">
+        <div class="section-heading">
+            <h2>📚 Recursos creativos</h2>
+            <p>Herramientas y páginas para explorar el arte y el fandom.</p>
+        </div>
+
+        <div class="resource-list">
+
+            <a class="resource"
+               href="https://furrycolombia.carrd.co/"
+               target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">🇨🇴</span>
+                <span>
+                    <strong>Furry Colombia</strong>
+                    <small>Conoce esta página de la comunidad furry colombiana.</small>
+                </span>
+            </a>
+
+            <a class="resource"
+               href="https://www.deviantart.com/"
+               target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">🎨</span>
+                <span>
+                    <strong>DeviantArt</strong>
+                    <small>Explora ilustraciones y estilos artísticos.</small>
+                </span>
+            </a>
+
+            <a class="resource"
+               href="https://www.canva.com/"
+               target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">✨</span>
+                <span>
+                    <strong>Canva</strong>
+                    <small>Crea fichas de personajes y diseños gráficos.</small>
+                </span>
+            </a>
+
+            <a class="resource"
+               href="https://www.pinterest.com/"
+               target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">📌</span>
+                <span>
+                    <strong>Pinterest</strong>
+                    <small>Busca referencias visuales e inspiración.</small>
+                </span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- CREADOR DE FURSONA -->
+<section id="creador">
+    <div class="container">
+        <div class="section-heading">
+            <h2>📝 Mi fursona</h2>
+            <p>Organiza las ideas de tu próximo personaje.</p>
+        </div>
+
+        <div class="checklist">
+
+            <label class="check-item">
+                <input type="checkbox">
+                <span>Elegí la especie de mi personaje.</span>
+            </label>
+
+            <label class="check-item">
+                <input type="checkbox">
+                <span>Definí los colores principales.</span>
+            </label>
+
+            <label class="check-item">
+                <input type="checkbox">
+                <span>Inventé su nombre y personalidad.</span>
+            </label>
+
+            <label class="check-item">
+                <input type="checkbox">
+                <span>Diseñé su apariencia y accesorios.</span>
+            </label>
+
+            <label class="check-item">
+                <input type="checkbox">
+                <span>Preparé un dibujo o una referencia visual.</span>
+            </label>
+
+            <div
+                class="progress-track"
+                id="progressTrack"
+                role="progressbar"
+                aria-label="Progreso de mi fursona"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0">
+
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <p class="progress-text" id="progressText">
+                0 de 5 tareas completadas 🐾
+            </p>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>Hecho con 💜, creatividad y muchas huellitas.</p>
+        <p><strong>FurryWorld</strong> · Tu mundo creativo.</p>
+        <p>© <span id="year"></span> FurryWorld</p>
+    </div>
+</footer>
+
+<script>
+// ======================================
+// TEMA CLARO Y OSCURO
+// ======================================
+
+const themeButton = document.getElementById("themeButton");
+
+function applyTheme(dark) {
+    document.body.classList.toggle("dark", dark);
+
+    themeButton.textContent = dark ? "☀️" : "🌙";
+
+    themeButton.setAttribute(
+        "aria-label",
+        dark ? "Activar tema claro" : "Activar tema oscuro"
+    );
+
+    try {
+        localStorage.setItem(
+            "furryworld-theme",
+            dark ? "dark" : "light"
+        );
+    } catch (error) {
+        // La página sigue funcionando si localStorage no está disponible.
+    }
+}
+
+try {
+    applyTheme(localStorage.getItem("furryworld-theme") === "dark");
+} catch (error) {
+    applyTheme(false);
+}
+
+themeButton.addEventListener("click", () => {
+    applyTheme(!document.body.classList.contains("dark"));
+});
+
+// ======================================
+// MENÚ MÓVIL
+// ======================================
+
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", () => {
+    const opened = navLinks.classList.toggle("open");
+
+    menuButton.textContent = opened ? "✕" : "☰";
+    menuButton.setAttribute("aria-expanded", String(opened));
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.textContent = "☰";
+        menuButton.setAttribute("aria-expanded", "false");
+    });
+});
+
+// ======================================
+// BUSCADOR Y FILTROS DE GALERÍA
+// ======================================
+
+const gallerySearch = document.getElementById("gallerySearch");
+const filterButtons = document.querySelectorAll(".filter-button");
+const furryCards = [...document.querySelectorAll(".furry-card")];
+const emptyMessage = document.getElementById("emptyMessage");
+
+let activeFilter = "todos";
+
+function filterGallery() {
+    const query = gallerySearch.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    furryCards.forEach(card => {
+        const category = card.dataset.category;
+        const text = card.textContent.toLowerCase();
+
+        const matchesFilter =
+            activeFilter === "todos" || category === activeFilter;
+
+        const matchesSearch = text.includes(query);
+
+        const visible = matchesFilter && matchesSearch;
+
+        card.hidden = !visible;
+
+        if (visible) visibleCount++;
+    });
+
+    emptyMessage.style.display =
+        visibleCount === 0 ? "block" : "none";
+}
+
+gallerySearch.addEventListener("input", filterGallery);
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+
+        filterButtons.forEach(item => {
+            item.classList.toggle("active", item === button);
+        });
+
+        filterGallery();
+    });
+});
+
+// ======================================
+// CHECKLIST DE FURSONA
+// ======================================
+
+const checkboxes = [
+    ...document.querySelectorAll(".check-item input")
+];
+
+const progressFill = document.getElementById("progressFill");
+const progressText = document.getElementById("progressText");
+const progressTrack = document.getElementById("progressTrack");
+
+function updateProgress() {
+    const completed = checkboxes.filter(box => box.checked).length;
+    const percentage = Math.round(
+        completed / checkboxes.length * 100
+    );
+
+    progressFill.style.width = percentage + "%";
+
+    progressText.textContent =
+        completed + " de " + checkboxes.length +
+        " tareas completadas " +
+        (completed === checkboxes.length
+            ? "🎉 ¡Tu fursona está lista!"
+            : "🐾");
+
+    progressTrack.setAttribute("aria-valuenow", percentage);
+}
+
+checkboxes.forEach((checkbox, index) => {
+    const key = "furryworld-check-" + index;
+
+    try {
+        checkbox.checked = localStorage.getItem(key) === "true";
+    } catch (error) {}
+
+    checkbox.addEventListener("change", () => {
+        try {
+            localStorage.setItem(key, checkbox.checked);
+        } catch (error) {}
+
+        updateProgress();
+    });
+});
+
+updateProgress();
+
+// ======================================
+// AÑO AUTOMÁTICO
+// ======================================
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
